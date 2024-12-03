@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1733253079 source:c:\users\jana\desktop\c++\lab2\stackedmenu\main.cpp
+	<windows.h>
+	<io.h>
+	<unistd.h>
+	<stdlib.h>
+	<stdio.h>
+	<conio.h>
+	<windows.h>
+	<iostream>
+
