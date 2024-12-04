@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 class Complex{
@@ -143,13 +144,14 @@ public:
         this->img--;
         return c;
     }
-     Complex operator (float)(){ // (float)c1
-        Complex c = *this;
+      operator float(){ // (float)c1
+        //Complex c = *this;
+        std::cout << std::fixed << std::setprecision(2);
         /*static_cast<float>(this->real);
         static_cast<float>(this->img);*/
         this->real=float(this->real);
         this->img=float(this->img);
-        return c;
+        return this->real;
     }
     friend Complex operator+(int x,Complex c1);
     friend Complex operator-(int x, Complex c1);
