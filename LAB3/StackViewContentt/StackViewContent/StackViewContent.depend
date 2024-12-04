@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1733339974 source:c:\users\jana\c-labss\lab3\stackviewcontentt\stackviewcontent\main.cpp
+	<windows.h>
+	<io.h>
+	<unistd.h>
+	<stdlib.h>
+	<stdio.h>
+	<conio.h>
+	<windows.h>
+	<iostream>
+

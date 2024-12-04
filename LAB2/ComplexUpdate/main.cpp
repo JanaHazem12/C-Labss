@@ -32,7 +32,7 @@ public:
     }
     /*void setImg(int imgData){
         img = imgData;
-    }I*/
+    }*/
     int getImg(){
         return img;
     }
