@@ -13,7 +13,7 @@
 #include <conio.h>
 #include <windows.h>
 #include <iostream>
-
+#include <string>
 using namespace std;
 
 void gotoxy1(int x, int y){
@@ -56,6 +56,7 @@ typedef struct Employee{
     int salary;
 }Employee;
 
+
 Employee e1[SIZE];
 
 class Stack{
@@ -68,17 +69,28 @@ class Stack{
 
     public:
     // COPY CONSTRUCTOR - haykhosh fi alatool mesh haykhosoh fel destructor
-    /*Stack(const Stack &s2){
+    /*Stack(const Stack &s2){ // copy constructor
         top = s2.top;
         size = s2.size;
-        e1=s2.e1;
+        e1=new Employee[size];//s2.e1;
+        for(int i=0; i<size; i++){
+            e1[i].id=s2.e1[i].id;
+            //e1[i].name=s2.e1[i].name;
+            strcpy(e1[i].name,s2.e1[i].name);
+            e1[i].salary=s2.e1[i].salary;
+        }
         cout<<"Copy Constructor !!"<<endl;
     }*/
-    Stack(int size){ // CONSTRUCTOR
+    Stack(){ // default constructor
+        this->size=5;
+        top=-1;
+        e1 = new Employee[size];
+    }
+    Stack(int size){ // parametrized constructor
         this->size=size;
         top=-1;
         e1 = new Employee[size]; // here it's an array
-        cout<<"Constructor !!"<<endl;
+        cout<<"Constructor !!";
     }
     ~Stack(){ // DESTRUCTOR
         cout<<"Destructor"<<endl;
@@ -167,12 +179,24 @@ class Stack{
                     setTextColor(stdout, TC_WHITE);
             }
     }
+    Stack operator=(Stack S1){ // S1 = S2
+        this->top=S1.top; // this of c1
+        this->size=S1.size;
+        this->e1=new Employee[S1.size];
+        for(int i=0; i<size; i++){
+            this->e1[i]=S1.e1[i];
+        }
+        //return s2;
+    }
 };
 
-void viewContent(Stack &s){ // CALL BY VALUE , CALL BY REFERENCE &s
+void viewContent(Stack s){
+    // CALL BY VALUE W/ COPY CONSTRUCTOR (haykhosh fi alatool)
+    // CALL BY VALUE W/O COPY CONSTRUCTOR
+    // CALL BY REFERENCE &s
         if(s.getTop() == -1){// CHECK IF STACK IS EMPTY, THEN PRINT "EMPTY STACK"
                 setTextColor(stdout, TC_RED);
-                cout<<"Empty Stack!!"<<endl;
+                //cout<<"Empty Stack!!"<<endl;
                 setTextColor(stdout, TC_WHITE);
             }
             else{ // STACK IS NOT EMPTY
@@ -228,7 +252,20 @@ int main(void){
                 Stack s2(sizee);
                 cout<<endl;
                 viewContent(s2); // CALL BY VALUE (with & without COPY CONSTR.)
-                //s2.viewContent(s2); // CALL BY REFERENCE
+
+                //Stack S1(sizee);
+                //s2 = S1;
+                /*cout<<"S1 = S2"<<endl;
+                cout<<"S1 Before"<<endl;
+                S1.display();
+                cout<<"S2 Before"<<endl;
+                s2.display();
+                cout<<"S1 After"<<endl;
+                S1.display();
+                cout<<"S2 After"<<endl;
+                s2.display();*/
+
+
                 int c=0;
                 int pos=1;
                 int row=10;

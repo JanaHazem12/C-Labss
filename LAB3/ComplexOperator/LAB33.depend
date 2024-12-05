@@ -1,4 +1,5 @@
 # depslib dependency file v1.0
-1733336283 source:c:\users\jana\c-labss\lab3\complexoperator\main.cpp
+1733351181 source:c:\users\jana\c-labss\lab3\complexoperator\main.cpp
 	<iostream>
+	<iomanip>
 
