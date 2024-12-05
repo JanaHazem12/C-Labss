@@ -19,9 +19,9 @@ class List{
     /*void setSize(int sizee){
         size=sizee;
     }*/
-    /*int *getList(){
+    int *getList(){
         return list1;
-    }*/
+    }
     /*void setList(List listt){
         list1=listt;
     }*/
@@ -93,11 +93,31 @@ class List{
         }
     }
 
-    //    operator=   //  --> L1 = L2 --> copy what's in L2 to L1
-    /*void operator=(List L2){
-        L3 = new int[L2.size];
+    //    operator=   //  --> list1 = list2 --> copy what's in L2 to L1 --------
 
-    }*/
+    //    list1.operator=(list2) - destination = list1 , source = list2
+    // TEST CASE:  NOT EQUAL/EQUAL --> MAKE A NEW ARRAY OF SIZE L2
+
+    void operator=(List &list2){  // source=L2 , dest=list1
+        int *list3 = new int[list2.size];
+        int i=0;
+        while(i<list2.size){
+            //list2.display();
+            //cout<<endl;
+            list3[i]=list2.list1[i]; // list3 is int * , list2 is List
+            //cout<<list3[i]<<" ";
+            i++;
+        }
+        //list2.display();
+        //cout<<endl;
+        //cout<<list3[i]<<" ";
+        delete[] list1;
+        list1=list3;
+        this->size=list2.size;
+        /*for(int i=0; i<list2.size; i++){
+            cout<<list1[i]<<" ";
+        }*/
+    }
 };
 
 int main()
@@ -105,14 +125,26 @@ int main()
     int num1=50;
     int num2=30;
     List list1;
+    List list2;
     //List list2();
+
     list1.push(num1);
     list1.push(num2);
     cout<<"List: ";
     list1.display();
 
+    list2.push(100);
+    list2.push(200);
+    list2.push(300);
+    cout<<"List2: ";
+    list2.display();
+
     cout<<"POPPED DATA: "<<list1.pop()<<endl;
-    cout<<"List after pop: ";
+    cout<<"List1 after pop: ";
+    list1.display();
+
+    cout<<"operator= ";
+    list1=list2;
     list1.display();
     return 0;
 }
