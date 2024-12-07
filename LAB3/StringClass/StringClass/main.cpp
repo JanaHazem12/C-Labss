@@ -167,43 +167,101 @@ class String{
         this->size=source.size;
         return;
     } // MAKE OPERATOR > & <
-    // Operator= --> S1=S2, copy str2 to str1
-    /*String operator=(char *S2){
-        StrCopy(this->str1, S2,StrLength(this->size+S2.size);
-            return S2;
-        }*/
+    bool operator>(String &source){
+        cout<<this->size<<endl;
+        cout<<source.size<<endl;
+            if(this->size-1>source.size){
+                return true;
+            }
+            else{
+                return false;
+            }
+    }
+    bool operator<(String &source){
+            if(this->size-1<source.size){
+                return true;
+            }
+            else{
+                return false;
+            }
+    }
+
+    //      resizing    //   str1 = abcd    str2= jhk  -->  newStr = jhkcd OR abcd
+
+    void StrResize(int newSize, char c = '/'){
+    // take 1 input from user which is the size of the new list (obligatory)
+    // if the NEW size > OLD size --> we'll take an extra input to fill the empty slots with
+        //cout<<this->size<<endl;
+        int j=0;
+        char *str4=new char[newSize];
+        while(this->str1[j]!=TERM){ // jana
+                //cout<<"ana hena"<<endl;
+                str4[j]=str1[j]; // adding what's in str1 to the NEW ARRAY - IMPOOOO
+                j++;
+            }
+        if(this->size==newSize){
+            return;
+        }
+        else if(newSize>this->size){
+            int i=0;
+            while(i<newSize+1){ // newSize=8 this->size=5 malak 0123 i=012345   newStr=malak newSize=8
+                //cout<<this->size<<endl;
+                if(i>this->size-1){ // i=5
+                    //cout<<i<<endl;
+                    str4[i]=c;
+                    i++;
+                }
+                else{
+                    i++;
+                }
+                }
+                str4[i]=TERM;
+        }
+        else{ //  newSize<this->size-1
+            int i=0;int j=0;
+            while(i<newSize){ // malak 0123 i=0123 newSize=3
+                i++;
+            }
+            for(j=0; j<newSize;j++){
+                str1[i]=TERM;
+                i++;
+            }
+        }
+         delete [] str1;
+         this->str1=str4;
+         this->size=newSize;
+    }
+    // if the new size is > this->size  ---> takes another input * for ex. & put it in the extra slots abcd 4 new size=6 abcd//
+    // if the new size is = this->size  ---> print this->str1
+    // if the new size is < this->size  ---> abcd newSize=2 --> ab
 };
 
 
 int main()
 {
-    char *stringInp1="malak";
+    char *stringInp1="nadeeen";
     //cout<<"Please Enter S1: "<<endl;
     //cin>>stringInp1;
     char *stringInp2="aminaa";
-    //cout<<stringInp1;
-    //cout<<stringInp2;
-    //cout<<"Please Enter S2: "<<endl;
-    //cin>>stringInp2;
     String S1(stringInp1);
-    //S1.getString();
     String S2(stringInp2);
     //cout<<"Length: "<<S1.StrLength(S1)<<endl; - DONE
-    //S1.StrCompare(S2); - DONE
-    //S1.StrConcat(S2);
+    //S1.StrCompare(S2); // - DONE
+    //cout<<endl;
+    //S1.StrConcat(S2); // - DONE
     //cout<<endl;
     //S1.display();
     //cout<<endl;
     //S2.display();
-    cout<<"String after copy: "<<endl;
-    S1.StrCopy(S2); // - DONE
-    S1.display();
-    cout<<endl;
+    //cout<<"String after copy: "<<endl;
+    //S1.StrCopy(S2); // - DONE
+    //S1.display();
+    //cout<<endl;
     //S1.setString(stringInp1);
     //S2.setString(stringInp2);
     /*S1.setSize(size);
     S2.setSize(size);*/
-    //S1>S2; // compare sizes
+    //S1>S2;
     /*cout<<"S1 > S2"<<endl;
     if(S1>S2){
         cout<<"True"<<endl;
@@ -220,8 +278,13 @@ int main()
         cout<<"False"<<endl;
     }*/
 
-    cout<<"operator ="<<endl; // - DONE
+    /*cout<<"operator ="<<endl; // - DONE
     S1=S2;
+    S1.display();*/
+
+    // RESIZING //
+    char a='f';
+    S1.StrResize(7);
     S1.display();
     return 0;
 }

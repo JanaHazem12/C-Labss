@@ -5,8 +5,6 @@ using namespace std;
 // STATIC MEMBERS --> function di ynfa3 astakhdemha b esm el class mesh lazem a-create obj w mel obj da astakhdemha
 
 
-
-
 class Stack{
     private:
     int top;
