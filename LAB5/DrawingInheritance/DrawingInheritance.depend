@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1733581593 source:c:\users\jana\c-labss\lab5\drawinginheritance\main.cpp
+	<iostream>
+	<graphics.h>
+	<winbgim.h>
+	<windows.h>
+
