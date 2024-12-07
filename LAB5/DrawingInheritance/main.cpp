@@ -190,28 +190,29 @@ int main(){
     Picture(&cir);*/
 
 
-    /*int gd = DETECT, gm;
+    int gd = DETECT, gm;
     initgraph(&gd, &gm, "");
     // Graphic Mode
     Picture myPic;
-
-    //Line ArrL[2] = {Line(420,50,300,300),Line(45,500,500,400)};
-    Rectanglee ArrR[4] = {Rectanglee(200,30,300,125,RED),Rectanglee(200,150,300,245,RED),Rectanglee(200,270,300,365,RED),Rectanglee(10,150,150,245,RED)}; // 600,100 - 270,50
+    // 2nd & last --> up & down
+    // 1st & 3rd --> right & left
+    Line ArrL[3] = {Line(190,70,220,70, RED),Line(190,195,220,195, RED),Line(190,320,220,320, RED)};
+    Rectanglee ArrR[5] = {Rectanglee(220,30,300,125,RED),Rectanglee(220,150,300,245,RED),Rectanglee(220,270,300,365,RED),Rectanglee(10,150,150,245,RED),Rectanglee(600,300,150,275,RED)}; // 600,100 - 270,50
     //Circle ArrC[3] = {Circle(50,50,50),Circle(200,100,100),Circle(420,50,30)};
 
     // x1,x2,y1,y2
-    //myPic.setLine(2, ArrL);
-    myPic.setRectangle(4, ArrR);
+    myPic.setLine(3, ArrL);
+    myPic.setRectangle(5, ArrR);
     //myPic.setCircle(3, ArrC);
 
-    myPic.paint();*/
+    myPic.paint();
 
-    //Shape s;
+    //Shape s; // comment everything!!
     /*Line L;
     Rectanglee R;
     Circle C;*/
 
-    //getch();
+    getch();
 
 
     return 0;
