@@ -5,11 +5,11 @@ using namespace std;
 // PUSH example --> list size = 0 , PUSH , list size = 1 ANOTHER PUSH list size = 1 , PUSH , list size = 2
 // POP example --> list size = 3 , POP , list size = 2 ANOTHER POP list size = 2 , POP , list size = 1
 
-
+template <class T>
 class List{
     private:
     int size;
-    int *list1;
+    T *list1;
 
     public:
     //  GETTERS & SETTERS  //
@@ -19,7 +19,7 @@ class List{
     /*void setSize(int sizee){
         size=sizee;
     }*/
-    int *getList(){
+    T *getList(){
         return list1;
     }
     /*void setList(List listt){
@@ -29,7 +29,7 @@ class List{
     //     CONSTRUCTOR   (initial values)  //
     List(){
         this->size=0;
-        list1 = new int[size];
+        list1 = new T[size];
     }
     //    DESTRUCTOR    //
     ~List(){
@@ -37,11 +37,11 @@ class List{
     }
 
     //     PUSH    // --> values are put, size is incremented by 1
-    void push(int x){ // list1.push(list2,5);
+    T push(T x){ // list1.push(list2,5);
         if(size==0){
             size++; // size = 1
             int i =0;
-            int* list3=new int[size];
+            T* list3=new T[size];
             list3[i]=x;
             delete[] list1;
             list1=list3;
@@ -49,7 +49,7 @@ class List{
         else{
              int j=0;
              size++; // size = 2   // example: list1 has 1 20    20,30
-             int* list2=new int[size];
+             T* list2=new T[size];
              while(j<size-1){
                 list2[j]=list1[j];
                 //cout<<list1[j]<<endl;
@@ -64,11 +64,11 @@ class List{
     }
 
     //     POP     // --> values are deleted, size is decremented by 1
-    int pop(){
+    T pop(){
         int i=0;
-        int storedData=list1[size-1];  // POPPED DATA
+        T storedData=list1[size-1];  // POPPED DATA
         size-=1;
-        int *list2 = new int[size]; // jana 4 size-- array fady with size 3
+        T *list2 = new T[size]; // jana 4 size-- array fady with size 3
         while(i<size){ // loop over new list
             list2[i]=list1[i];
             i++;
@@ -99,7 +99,7 @@ class List{
     // TEST CASE:  NOT EQUAL/EQUAL --> MAKE A NEW ARRAY OF SIZE L2
 
     void operator=(List &list2){  // source=L2 , dest=list1
-        int *list3 = new int[list2.size];
+        T *list3 = new T[list2.size];
         int i=0;
         while(i<list2.size){
             //list2.display();
@@ -122,29 +122,45 @@ class List{
 
 int main()
 {
-    int num1=50;
-    int num2=30;
-    List list1;
-    List list2;
+    /*float num1=50.5;
+    float num2=30.6;*/
+
+    /*List<float>list1;
+    List<float>list2;*/
+
+    List<char>list1;
+    List<char>list2;
     //List list2();
 
-    list1.push(num1);
-    list1.push(num2);
-    cout<<"List: ";
+    /*list1.push(20.5);
+    list1.push(50.4);*/
+
+    list1.push('b');
+    list1.push('a');
+
+    cout<<"List 1: ";
     list1.display();
 
-    list2.push(100);
-    list2.push(200);
-    list2.push(300);
-    cout<<"List2: ";
+    /*list2.push(100.1);
+    list2.push(200.2);
+    list2.push(300.4);*/
+
+
+    list2.push('jana');
+    list2.push('mina');
+    list2.push('mohamed');
+    cout<<"List 2: ";
     list2.display();
 
     cout<<"POPPED DATA: "<<list1.pop()<<endl;
-    cout<<"List1 after pop: ";
+    cout<<"List 1 after pop: ";
     list1.display();
 
-    cout<<"operator= ";
+    //cout<<"operator= ";
+    cout<<"List 1 before operator= : ";
+    list1.display();
     list1=list2;
+    cout<<"List 1 after operator= : ";
     list1.display();
     return 0;
 }

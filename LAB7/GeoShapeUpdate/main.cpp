@@ -20,6 +20,7 @@ class GeoShape{
     GeoShape(float d11, float d22){
         d1=d11;
         d2=d22;
+        cout<<"here";
     }
     ~GeoShape(){
         cout<<"GEOSHAPE DESTRUCTOR"<<endl;
@@ -39,6 +40,7 @@ class GeoShape{
     float calculateArea(){
         return 0;
     }
+    //virtual void calculateArea()=0;
 
 };
 
@@ -54,8 +56,8 @@ class Triangle:public GeoShape{
     }
     float calculateArea(){ // no input params as I already took them in the constructor
         float AreaT = 0.5 * d1 * d2;
-        cout<<AreaT<<endl;
-        return 0.5 * d1 * d2;
+        //cout<<AreaT<<endl;
+        return AreaT;
     }
 
 };
@@ -123,8 +125,8 @@ class Square: private Rectangle{
         d1=d2=x;
     }
     float calculateArea(){
-        float AreaS = d1 * d2;
-        return AreaS;
+        /*float AreaS = d1 * d2;
+        return AreaS;*/
         return Rectangle::calculateArea(); // I can return d1*d2 bas keda NO OVERRIDING
     }
 
@@ -133,7 +135,7 @@ class Square: private Rectangle{
 int main()
 {
     Triangle T(5,10);
-    T.calculateArea();
+    cout<<T.calculateArea();
     /*Rectangle R(3,2);
     R.calculateArea();
     Circle C(3);
